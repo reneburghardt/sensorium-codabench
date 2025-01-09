@@ -95,7 +95,7 @@
                     </div>
                 </span>
                 <div class="right menu item">
-                    {% if user.is_superuser %}
+                    {% if request.user.is_staff %}
 						<div id="competition_dropdown" class="ui dropdown item">
 							<div class="text">
 								<i class="ui small trophy icon"></i>
