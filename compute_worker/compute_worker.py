@@ -442,6 +442,8 @@ class Run:
                 os.mkdir(self.bundle_dir)
             bundle_file = tempfile.NamedTemporaryFile(dir=self.bundle_dir, delete=False).name
 
+        logger.info(f"Loading file from {url} to {bundle_file}")
+
         # Fetch and extract
         retries, max_retries = (0, 10)
         while retries < max_retries:
@@ -450,7 +452,7 @@ class Run:
                     # Download the bundle
                     urlretrieve(url, bundle_file)
                 except HTTPError:
-                    raise SubmissionException(f"Problem fetching {url} to put in {destination}")
+                    raise SubmissionException(f"Problem fetching {url} to put in {bundle_file}")
             try:
                 # Extract the contents to destination directory
                 with ZipFile(bundle_file, 'r') as z:
@@ -461,7 +463,7 @@ class Run:
                 if retries >= max_retries:
                     raise  # Re-raise the last caught BadZipFile exception
                 else:
-                    logger.info("Failed. Retrying in 60 seconds...")
+                    logger.info(f"Failed unzipping {bundle_file} to {os.path.join(self.root_dir, destination)}. Retrying in 60 seconds...")
                     time.sleep(60)  # Wait 60 seconds before retrying
         # Return the zip file path for other uses, e.g. for creating a MD5 hash to identify it
         return bundle_file
@@ -780,6 +782,8 @@ class Run:
             # Send along submission result so scoring_program can get access
             bundles += [(self.prediction_result, 'input/res')]
 
+        logger.info(f"Preparing run with bundles: {bundles}")
+
         for url, path in bundles:
             if url is not None:
                 # At the moment let's just cache input & reference data
@@ -812,7 +816,7 @@ class Run:
         program_dir = os.path.join(self.root_dir, "program")
         ingestion_program_dir = os.path.join(self.root_dir, "ingestion_program")
 
-        logger.info("Running scoring program, and then ingestion program")
+        logger.info(f"Running scoring program {program_dir}, and then ingestion program {ingestion_program_dir}")
         loop = asyncio.new_event_loop()
         gathered_tasks = asyncio.gather(
             self._run_program_directory(program_dir, kind='program', can_be_output=True),
@@ -886,6 +890,7 @@ class Run:
         # {
         #     "correct": 1.0
         # }
+        logger.info(f"Look for scores in directory {self.output_dir}")
         if os.path.exists(os.path.join(self.output_dir, "scores.json")):
 
             scores_file = os.path.join(self.output_dir, "scores.json")
