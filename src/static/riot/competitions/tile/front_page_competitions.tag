@@ -2,7 +2,7 @@
     <div class="ui two column grid">
         <div class="eight wide column">
             <div class="ui large header">
-                Popular Benchmarks
+                Popular Competitions
             </div>
             <div class="loader-container popular">
                 <div class="lds-ring">
@@ -18,7 +18,7 @@
 
         <div class="eight wide column">
             <div class="ui large header">
-                Recent Benchmarks
+                Recent Competitions
             </div>
             <div class="loader-container popular">
                 <div class="lds-ring">
@@ -75,7 +75,7 @@
         }
 
         .show-more:hover {
-            background-color: #467799;
+            background-color: #91acbf;
             transform: scale(1.05);
             text-decoration: none;
         }

@@ -28,6 +28,22 @@ class OrganizeView(TemplateView):
     template_name = 'pages/organize.html'
 
 
+class AcknowledgementsView(TemplateView):
+    template_name = 'pages/acknowledgements.html'
+
+
+class ImprintView(TemplateView):
+    template_name = 'pages/imprint.html'
+
+
+class PrivacyPolicyView(TemplateView):
+    template_name = 'pages/privacy_policy.html'
+
+
+class TermsOfUseView(TemplateView):
+    template_name = 'pages/terms_of_use.html'
+
+
 class SearchView(TemplateView):
     template_name = 'search/form.html'
 

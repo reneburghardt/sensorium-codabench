@@ -99,7 +99,7 @@
 						<div id="competition_dropdown" class="ui dropdown item">
 							<div class="text">
 								<i class="ui small trophy icon"></i>
-								Benchmarks
+								Competitions
 							</div>
 							<i class="dropdown icon"></i>
 							<div class="menu">
@@ -111,9 +111,10 @@
                     {% else %}
 						<a class="item" href="{% url "competitions:public" %}">
 							<i class="ui small trophy icon"></i>
-							Benchmarks
+							Competitions
 						</a>
                     {% endif %}
+					{% if request.user.is_staff %}
                     <a class="item" href="{% url "tasks:task_management" %}">
                         <i selenium="tasks" class="ui small file icon"></i>
                         Resources
@@ -122,6 +123,7 @@
                         <i class="ui small computer icon"></i>
                         Queue Management
                     </a>
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <div id="user_dropdown" class="ui dropdown item">
                             <div class="text">
@@ -212,29 +214,18 @@
     <div class="ui container">
         <div class="ui stackable inverted equal height stackable grid">
             <div class="three wide column">
-                <h4 class="ui inverted header">Chasuite</h4>
                 <div class="ui inverted link list">
-                    <a href="https://codalab.lisn.fr/" class="item">Competitions v1.6</a>
-                    <a href="http://chahub.org/" class="item">Chahub</a>
-                    <a href="https://chagrade.lri.fr/" class="item">Chagrade</a>
-                </div>
-            </div>
-            <div class="three wide column">
-                <h4 class="ui inverted header">About</h4>
-                <div class="ui inverted link list">
-                    <a href="https://github.com/codalab/codalab-competitions/wiki/Project_About_CodaLab" class="item">About</a>
-                    <a href="https://github.com/codalab/codabench" class="item">Github</a>
-                    <a href="https://github.com/codalab/codalab-competitions/wiki/Privacy" class="item">Privacy and Terms</a>
-                    <a href="{% url 'schema-swagger-ui' %}" class="item">API Docs</a>
+                    <a href="{% url "pages:acknowledgements" %}" class="item">Acknowledgements</a>
+                    <a href="{% url "pages:imprint" %}" class="item">Imprint</a>
+                    <a href="{% url "pages:privacy_policy" %}" class="item">Privacy Policy</a>
+                    <a href="{% url "pages:terms_of_use" %}" class="item">Terms of Use</a>
                 </div>
             </div>
             <div class="three wide column">
                 {# Empty for now, can add a list of links here if needed! #}
             </div>
             <div class="seven wide column">
-                <h4 class="ui inverted header">CodaBench</h4>
-                <p>Join us on <a href="https://github.com/codalab/codabench" target="_blank">Github</a> for contact &amp; bug reports</p>
-                <p>Questions about the platform? See our <a href="https://github.com/codalab/codabench/wiki" target="_blank">Wiki</a> for more information.</p>
+                <p>Project maintained by <a href="https://sinzlab.org/">Sinzlab</a> and <a href="https://eckerlab.org/">Eckerlab</a></p>
             </div>
         </div>
     </div>
