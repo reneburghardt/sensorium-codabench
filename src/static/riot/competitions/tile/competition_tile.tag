@@ -113,7 +113,7 @@
             margin 0.35em
 
         .comp-stats
-            background #405e73
+            background #91acbf
             color #e8e8e8
             padding 10px
             text-align center

@@ -65,7 +65,7 @@
             width: fit-content;
             margin: 20px auto;
             padding: 10px 20px;
-            background-color: #4a6778;
+            background-color: #91acbf;
             color: white;
             text-align: center;
             border-radius: 5px;
