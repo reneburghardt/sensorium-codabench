@@ -20,43 +20,7 @@
     {% endif %}
 
     <div class="home-wrap">
-        <front-page-competitions></front-page-competitions>
-
-        <!-- Action Section -->
-        <!--<div id="action-container" class="segment-container ui segment full-width">
-            <div class="ui header">
-                Get Started
-            </div>
-            <div class="container-content">
-                <div class="center aligned column">
-                    <h3 class="ui icon header">
-                        <i class="trophy icon"></i>
-                        Participate
-                    </h3>
-                    <div>
-                        <p>Find benchmarks that pique your interest! A benchmark allows you to test new algorithms against reference datasets OR (inverted benchmark) submit challenging data to reference algorithms.</p>
-                    </div>
-                </div>
-                <div class="center aligned column">
-                    <h3 class="ui icon header">
-                        <i class="users icon"></i>
-                        Organize
-                    </h3>
-                    <div>
-                        <p>Organize a benchmark on Codabench. Start with our <a href="https://github.com/codalab/codabench/wiki/Getting-started-with-Codabench">tutorial</a>.</p>
-                    </div>
-                </div>
-                <div class="center aligned column">
-                    <h3 class="ui icon header">
-                        <i class="code icon"></i>
-                        Contribute
-                    </h3>
-                    <div>
-                        <p>Interested in joining the development team? Join us on <a href="https://github.com/codalab/codabench">Github</a> or <a href="mailto:info@codalab.org">contact us</a> directly.</p>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+        <front-page-competitions class="segment-container"></front-page-competitions>
 
         <!-- Stats section -->
         <div class="ui three column grid" id="general-stats">
@@ -93,13 +57,17 @@
                     <div class="eight wide left aligned column">
                         <div class="row column-bottom-padding">
                             <h3 class="ui color-header header">The Problem</h3>
-                            <div class="ui divider"></div>
 							<strong>Even today’s most advanced models of visual cortex are not able to fully predict the brain’s responses.</strong>
                             <p>Understanding how the brain processes visual input is a long standing goal in neuroscience. To solve this question in a quantitative, testable, and reproducible way, accurate predictive models of neural population responses to natural stimuli are crucial. However, even today’s most advanced models of visual cortex are only able to account for a fraction of the observed neuronal activity. Furthermore, because there is an abundance of models and metrics, but no widely-used reference dataset, it is challenging to compare models on equal ground. This makes it difficult to determine the current state-of-the-art model.</p>
+							<p>
+								<a href="{% static 'img/sensorium_2023_schematic-01.png' %}" target="_blank">
+									<img src="{% static 'img/sensorium_2023_schematic-01.png' %}"/>
+								</a>
+							</p>
                         </div>
                         <div class="row column-bottom-padding">
-                            <h3 class="ui color-header header">The SENSORIUM 2023 Competition</h3>
                             <div class="ui divider"></div>
+                            <h3 class="ui color-header header">The SENSORIUM 2023 Competition</h3>
 							<strong>Benchmarking the predictive performance of your model on large-scale datasets.</strong>
                             <p>The SENSORIUM 2023 competition offers a publicly available, large-scale dataset consisting of the activity from over 38,000 neurons from the primary visual cortex of five different mice in response to around 1800 natural scene videos (around 10 seconds). The dataset also includes additional behavioral measurements such as running speed, pupil dilation and eye movements. The performance of predictive models can be automatically evaluated by submitting predicted neural responses to our website which will display the performance of all submissions in a leaderboard for easy comparison.</p>
 							<p>The SENSORIUM 2022 competition approached this issue for static stimulus (pictures) models. This year we are adding a time dimensional component and try to inspire community to establish a benchmark dataset and a model for dynamic stimulus (videos). See more about data in the whitepaper and data section.</p>
@@ -142,7 +110,8 @@
             <div class="ui header">
                 Cite Sensorium
             </div>
-            <div class="row container-content">
+            <div class="row container-content left aligned">
+                <h3 class="ui color-header header">Sensorium 2023</h3>
                 <pre>
 @article{sensorium2023,
 	title = {The {Dynamic} {Sensorium} competition for predicting large-scale mouse visual cortex activity from videos},
@@ -150,6 +119,16 @@
 	year = {2024},
 	doi = {<a href="https://doi.org/10.48550/arXiv.2305.19654">10.48550/arXiv.2305.19654</a>},
 	url = {<a href="http://arxiv.org/abs/2305.19654" target="_blank">http://arxiv.org/abs/2305.19654</a>},
+} </pre>
+				<div class="ui divider"></div>
+                <h3 class="ui color-header header">Sensorium 2022</h3>
+                <pre>
+@article{sensorium2022,
+	title = {The {Sensorium} competition on predicting large-scale mouse primary visual cortex activity},
+	author = {Willeke, Konstantin F. and Fahey, Paul G. and Bashiri, Mohammad and Pede, Laura and Burg, Max F. and Blessing, Christoph and Cadena, Santiago A. and Ding, Zhiwei and Lurz, Konstantin-Klemens and Ponder, Kayla and Muhammad, Taliah and Patel, Saumil S. and Ecker, Alexander S. and Tolias, Andreas S. and Sinz, Fabian H.},
+	year = {2022},
+	doi = {<a href="https://doi.org/10.48550/arXiv.2206.08666">10.48550/arXiv.2206.08666</a>},
+	url = {<a href="http://arxiv.org/abs/2206.08666">http://arxiv.org/abs/2206.08666</a>},
 } </pre>
             </div>
         </div>
