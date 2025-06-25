@@ -26,12 +26,13 @@ $(document).ready(function () {
         action: 'hide'
     })
     // Sidebar helpers
-    $('.ui.thin.sidebar')
+    $('#page_wrapper .ui.sidebar')
         .sidebar({
             transition: 'push',
-            context: $('#sidebar_context')
+            context: $('#page_wrapper .bottom.segment')
         })
-        .sidebar('attach events', '#hamburger_button');
+        .sidebar('attach events', '#hamburger_button .item')
+    ;
 
     /*-----------------------------------------------------------------------------
      Riotjs

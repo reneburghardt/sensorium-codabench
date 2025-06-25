@@ -62,129 +62,118 @@
     {% endfor %}
 {% endif %}
 
-<div>
-    <div id="hamburger_button">
-        <div class="ui icon button">
-            <i class="bars icon"></i>
-        </div>
-    </div>
-    <!-- Page Contents -->
-    <div id="header" class="ui vertical center aligned segment masthead jumbotron
-        {% block top_div_extra_class %}{% endblock %}">
-        <div class="ui container">
-            <div id="topleft_menu" class="ui secondary menu">
-                <div class="right menu item">
-                    {% if request.user.is_staff %}
-						<div id="competition_dropdown" class="ui dropdown item">
-							<div class="text">
-								Competitions
-							</div>
-							<i class="dropdown icon"></i>
-							<div class="menu">
-								<div class="header"></div>
-								<a class="item" href="{% url "competitions:management" %}">Management</a>
-								<a class="item" href="{% url "competitions:public" %}">Public</a>
-							</div>
-						</div>
-                    {% else %}
-						<a class="item button3d" href="{% url "competitions:public" %}">
-							Competitions
-						</a>
-                    {% endif %}
-					{% if request.user.is_superuser %}
+<div id="header" class="ui vertical center aligned segment masthead jumbotron
+    {% block top_div_extra_class %}{% endblock %}">
+    <div class="ui container">
+        <div id="topleft_menu" class="ui secondary menu">
+            <div class="right menu item">
+                {% if request.user.is_staff %}
+                    <div id="competition_dropdown" class="ui dropdown item">
+                        <div class="text">
+                            Competitions
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="header"></div>
+                            <a class="item" href="{% url "competitions:management" %}">Management</a>
+                            <a class="item" href="{% url "competitions:public" %}">Public</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a class="item button3d" href="{% url "competitions:public" %}">
+                        Competitions
+                    </a>
+                {% endif %}
+                {% if request.user.is_superuser %}
                     <a class="item button3d" href="{% url "tasks:task_management" %}">
                         Resources
                     </a>
                     <a class="item button3d" href="{% url "queues:management" %}">
                         Queue Management
                     </a>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-                        <div id="user_dropdown" class="ui dropdown item">
-                            <div class="text">
-                                {{ request.user.username }}
-                            </div>
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                
-                                    <div class="header">Admin management</div>
-{#                                    <a class="item" href="#">Customize Codalab</a>#}
-                                    <a class="item" href="{% url "pages:server_status" %}">Server Status</a>
-                                {% if request.user.is_staff %}
-                                    <a class="item" href="{% url "pages:monitor_queues" %}">Monitor Queues</a>
-                                    <a class="item" href="{% url "admin:index" %}">Django Admin</a>
-                                    <a class="item" href="{% url "su_login" %}">Change User</a>
-                                    <a class="item" href="{% url "analytics:analytics" %}">Analytics</a>
-{#                                    <a class="item" href="#">Health</a>#}
-{#                                    <a class="item" href="#">Users</a>#}
-{#                                    <a class="item" href="#">Submissions</a>#}
-{#                                    <a class="item" href="#" onclick="$('#user_switch_modal').modal('show')">Switch#}
-{#                                        User</a>#}
-                                {% endif %}
-                                <div class="ui divider"></div>
-                                <div class="header">Account</div>
-                                <a class="item" href="{% url 'profiles:user_profile' username=user.username %}">
-                                    <i class="icon user"></i>
-                                    View Profile
-                                </a>
-                                <a class="item" href="{% url 'profiles:user_edit' username=user.username %}">
-                                    </i><i class="edit icon"></i>
-                                    Edit profile
-                                </a>
-                                <a class="item" href="{% url 'accounts:user_account' username=user.username %}">
-                                    <i class="cog icon"></i>
-                                    Account
-                                </a>
-                                <a class="item" href="{% url 'profiles:user_notifications' username=user.username %}">
-                                    </i><i class="bell icon"></i>
-                                    Notifications
-                                </a>
-                                <a class="item" href="{% url 'accounts:password_reset' %}">
-                                    <i class="lock icon"></i>
-                                    Change Password
-                                </a>
-                                <a class="item" href="{% url 'accounts:logout' %}">
-                                    <i class="icon sign out"></i>
-                                    Logout
-                                </a>
-                                <div class="ui divider"></div>
-                                <div class="header">Organizations</div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <div id="user_dropdown" class="ui dropdown item">
+                        <div class="text">
+                            {{ request.user.username }}
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="header">Admin management</div>
+                            <a class="item" href="{% url "pages:server_status" %}">Server Status</a>
+                            {% if request.user.is_staff %}
+                                <a class="item" href="{% url "pages:monitor_queues" %}">Monitor Queues</a>
+                                <a class="item" href="{% url "admin:index" %}">Django Admin</a>
+                                <a class="item" href="{% url "su_login" %}">Change User</a>
+                                <a class="item" href="{% url "analytics:analytics" %}">Analytics</a>
+                            {% endif %}
+                            <div class="ui divider"></div>
+                            <div class="header">Account</div>
+                            <a class="item" href="{% url 'profiles:user_profile' username=user.username %}">
+                                <i class="icon user"></i>
+                                View Profile
+                            </a>
+                            <a class="item" href="{% url 'profiles:user_edit' username=user.username %}">
+                                </i><i class="edit icon"></i>
+                                Edit profile
+                            </a>
+                            <a class="item" href="{% url 'accounts:user_account' username=user.username %}">
+                                <i class="cog icon"></i>
+                                Account
+                            </a>
+                            <a class="item" href="{% url 'profiles:user_notifications' username=user.username %}">
+                                </i><i class="bell icon"></i>
+                                Notifications
+                            </a>
+                            <a class="item" href="{% url 'accounts:password_reset' %}">
+                                <i class="lock icon"></i>
+                                Change Password
+                            </a>
+                            <a class="item" href="{% url 'accounts:logout' %}">
+                                <i class="icon sign out"></i>
+                                Logout
+                            </a>
+                            <div class="ui divider"></div>
+                            <div class="header">Organizations</div>
                             {% for org in user.organizations.all %}
                                 {% if user in org.user_record.all %}
-                                <a class="item" href="{% url 'profiles:organization_profile' pk=org.id %}">
-                                    <i class="users icon"></i>
-                                    {{ org.name }}
-                                </a>
+                                    <a class="item" href="{% url 'profiles:organization_profile' pk=org.id %}">
+                                        <i class="users icon"></i>
+                                        {{ org.name }}
+                                    </a>
                                 {% endif %}
                             {% endfor %}
-                                <a class="item" href="{% url 'profiles:organization_create' %}">
-                                    <i class="plus icon"></i>
-                                    Create Organization
-                                </a>
-                            </div>
+                            <a class="item" href="{% url 'profiles:organization_create' %}">
+                                <i class="plus icon"></i>
+                                Create Organization
+                            </a>
                         </div>
-                    {% else %}
-                        <a class="item button3d" href="{% url 'accounts:login' %}">Login</a>
-                        {% if ENABLE_SIGN_UP %}
-                            <a class="item button3d" href="{% url 'accounts:signup' %}">Sign-up</a>
-                        {% endif %}
+                    </div>
+                {% else %}
+                    <a class="item button3d" href="{% url 'accounts:login' %}">Login</a>
+                    {% if ENABLE_SIGN_UP %}
+                        <a class="item button3d" href="{% url 'accounts:signup' %}">Sign-up</a>
                     {% endif %}
-                </div>
+                {% endif %}
             </div>
         </div>
-	    <div id="logo_div" class="ui text container">
-	        <a href="/">
-				<img id="jumbo_logo" src="{% static 'img/sensorium.png' %}">
-	        </a>
-	    </div>
-        {% block top_div_extra_content %}{% endblock %}
     </div>
+    <div id="logo_div" class="ui text container">
+        <a href="/">
+            <img id="jumbo_logo" src="{% static 'img/sensorium.png' %}">
+        </a>
+    </div>
+    {% block top_div_extra_content %}{% endblock %}
 </div>
 
-<div id="sidebar_context">
-    <!-- Sidebar Menu -->
-    <div class="ui sidebar attached top visible vertical push menu inline">
-        <div class="ui container">
+<div id="page_wrapper">
+    <div id="hamburger_button" class="ui top attached demo menu">
+        <a class="item ui icon button">
+            <i class="sidebar icon"></i>
+        </a>
+    </div>
+    <div class="ui bottom attached segment pushable">
+        <div class="ui top sidebar visible menu">
             <a href="{% url "pages:home" %}" class="item">Problem</a>
             <a href="{% url "pages:home" %}" class="item">Competition</a>
             <a href="{% url "pages:home" %}" class="item">Starter Kit</a>
@@ -192,18 +181,19 @@
             <a href="{% url "pages:home" %}" class="item">About Us</a>
             <a href="{% url "pages:home" %}" class="item">News</a>
         </div>
-    </div>
-</div>
 
-{% block sticky_button %}
-{% endblock %}
-
-<div id="page_content" class="ui container grid pusher">
-    <div class="row">
-        {% block content %}
+        {% block sticky_button %}
         {% endblock %}
+
+        <div id="page_content" class="ui container grid pusher">
+            <div class="row">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
 </div>
+
 <div class="ui inverted vertical footer segment">
     <div class="ui container">
         <div class="ui stackable inverted equal height stackable grid">
