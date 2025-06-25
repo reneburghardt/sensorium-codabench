@@ -565,7 +565,7 @@
                 width 100%
 
             .phase-header
-                font-family 'Roboto', sans-serif
+                font-family 'Jura', sans-serif
                 font-size 20px !important
                 text-transform uppercase
                 font-weight 600
@@ -584,7 +584,7 @@
             .phase-label
                 font-size 15px
                 font-weight 600
-                font-family 'Roboto', sans-serif
+                font-family 'Jura', sans-serif
                 color $teal
                 text-transform uppercase
 

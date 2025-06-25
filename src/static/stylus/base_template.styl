@@ -13,13 +13,28 @@
     Competition Tile Color [Darker Red]: #c7402d
 */
 
+$competition2023 = #ddff00
+$currentcompetition = $competition2023
+
 /* --------------------------------------------------------------------------------------
  misc styles for base template
 
  header/background
  */
 html
-    background-color #f6f8fa
+    background-color #ffffff
+
+.ui.segment,
+.ui.segments,
+.segment
+    font-size 16px
+
+h1,
+h2,
+h3,
+h4,
+h5
+  font-family Jura, sans-serif
 
 #bg
     z-index -1
@@ -59,11 +74,28 @@ html
     left 0
     top 9px
 
+.ui.menu,
+.ui.button
+    font-family Jura, sans-serif
+
+.ui.inverted.menu .item
+    margin 0 10px
+
+.ui.secondary.inverted.menu .item.button3d,
+.ui.secondary.inverted.menu .item.button3d:hover
+    --c #000000
+    --b .1em
+    --d 5px
+    --_s calc(var(--d) + var(--b))
+    color var(--c) !important
+    border solid #000000
+    border-width var(--b) var(--b) var(--_s) var(--_s)
+    background unquote("conic-gradient(at left var(--_s) bottom var(--_s), #0000 90deg, var(--c) 0) 0 100% / calc(100% - var(--b)) calc(100% - var(--b)) border-box")
+    clip-path polygon(0% var(--d), var(--d) 0%, 100% 0%, 100% calc(100% - var(--d)), calc(100% - var(--d)) 100%, 0% 100%)
+    padding 0.1em 2em
+
 .ui.secondary.inverted.pointing.menu
     border transparent
-
-.ui.secondary.inverted.menu div.item a.item
-    color rgba(255,255,255,.9) !important
 
 .jumbotron
     padding 0 0 2em 0 !important
@@ -91,8 +123,6 @@ html
         border-radius 0 !important
 
 #competition_dropdown
-    color rgba(255,255,255,.9) !important
-
     a
         width 100%
         border-radius 0 !important
@@ -180,15 +210,24 @@ html
  */
 
 .footer.ui.inverted.segment
-    background #405e73
-    color rgba(255, 255, 255, 0.5)
+    background #000000
+    color #ffffff
+    font-weight bold
 
     a
-        color #fff 
+        color $currentcompetition
+
+    .link.list
+        a
+            color #ffffff
 
 .footer
     &.segment
-        padding 2em 0
+        padding 2em 0 0
+        margin 1em 7.5em
+
+.footer #slack_logo
+    width 120px
 
 /* --------------------------------------------------------------------------------------
  mobile
@@ -234,7 +273,6 @@ html
  Force the footer to stretch all the way to the bottom of viewport
  */
 body.pushable>.pusher
-    background-color #f6f8fa !important
     overflow initial
 
 .pushable
@@ -242,6 +280,20 @@ body.pushable>.pusher
 
 .pusher > .footer
     flex 1
+
+/* --------------------------------------------------------------------------------------
+ Mouse hole
+ */
+#mousehole
+    display block
+    margin 10px auto 0
+    width 30px
+    height 30px
+    background-color $currentcompetition
+    border-top-left-radius 50%
+    border-top-right-radius 50%
+    border-bottom-left-radius 0
+    border-bottom-right-radius 0
 
 /* --------------------------------------------------------------------------------------
  Fix padding on menus
@@ -273,12 +325,10 @@ body.pushable>.pusher
 #version
     margin-top 10px
     text-align center
-    font-family monospace
-    font-size 12px
     font-weight bold
     padding 5px
     color #8b8d8d
 
 #version a 
     text-decoration none
-    color inherit
+    color #ffffff

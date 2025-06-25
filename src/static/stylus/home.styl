@@ -2,10 +2,12 @@ $backgrounddark = #91acbf
 $backgroundlight = #f6f8fa
 $textcolorlight = #f8f8f8
 $textcolordark = #2e2e2e
+$competition2023 = #ddff00
+$currentcompetition = $competition2023
 
 body
   -webkit-font-smoothing antialiased
-  font-family Roboto, sans-serif
+  font-family Jura, sans-serif
   background-color $backgroundlight
   color $textcolordark !important
 
@@ -106,14 +108,24 @@ body
 
 .ui.statistic
   flex 1 1 auto
-  text-align: center
-  width: 100%
+  text-align center
+  width 100%
 
   .value
     font-weight 800
+    font-family Jura, sans-serif
+    color $currentcompetition
+    background black
+    line-height 200px
+    height 200px
+    border-radius 50px
+    font-size 7rem !important
 
   .label
     font-weight 100
+    text-transform none
+    margin-top 20px !important
+    font-size 2em
 
 #general-stats
   width: 80% !important;
@@ -265,10 +277,6 @@ front-page-competitions
   padding 1em !important
   text-align left
   white-space pre-wrap
-
-.footer.segment
-  padding 2em
-  margin 1em 7.5em
 
 .logged-in
   display flex

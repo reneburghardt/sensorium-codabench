@@ -28,7 +28,8 @@ $(document).ready(function () {
     // Sidebar helpers
     $('.ui.thin.sidebar')
         .sidebar({
-            transition: 'overlay'
+            transition: 'push',
+            context: $('#sidebar_context')
         })
         .sidebar('attach events', '#hamburger_button');
 
