@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Sensorium</title>
-    <link rel="icon" type="image/ico" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="icon" type="image/ico" href="{% static 'img/favicon.png' %}"/>
 
     <!-- Vendor -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
@@ -156,15 +156,20 @@
                     {% endif %}
                 {% endif %}
             </div>
+            <div class="left menu item">
+                <div id="logo_div" class="ui container">
+                    <a href="/">
+                        <img id="jumbo_logo" src="{% static 'img/sensorium_logo_schwarz.png' %}">
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="logo_div" class="ui text container">
-        <a href="/">
-            <img id="jumbo_logo" src="{% static 'img/sensorium.png' %}">
-        </a>
     </div>
     {% block top_div_extra_content %}{% endblock %}
 </div>
+
+{% block sticky_button %}
+{% endblock %}
 
 <div id="page_wrapper">
     <div id="hamburger_button" class="ui top attached demo menu">
@@ -172,23 +177,26 @@
             <i class="sidebar icon"></i>
         </a>
     </div>
-    <div class="ui bottom attached segment pushable">
-        <div class="ui top sidebar visible menu">
-            <a href="{% url "pages:home" %}" class="item">Problem</a>
-            <a href="{% url "pages:home" %}" class="item">Competition</a>
-            <a href="{% url "pages:home" %}" class="item">Starter Kit</a>
-            <a href="{% url "pages:home" %}" class="item">Results</a>
-            <a href="{% url "pages:home" %}" class="item">About Us</a>
-            <a href="{% url "pages:home" %}" class="item">News</a>
-        </div>
+    <div class="ui bottom attached segment">
+        <div class="ui grid">
+            <div class="four wide column">
+                <div id="sidebar-nav-anchor" class="ui container">
+                </div>
+                <div id="sidebar-menu" class="ui secondary sidebar vertical visible menu left">
+                    <a href="{% url "pages:home" %}" class="item">Problem</a>
+                    <a href="{% url "pages:home" %}" class="item">Competition</a>
+                    <a href="{% url "pages:home" %}" class="item">Starter Kit</a>
+                    <a href="{% url "pages:home" %}" class="item">Results</a>
+                    <a href="{% url "pages:home" %}" class="item">About Us</a>
+                    <a href="{% url "pages:home" %}" class="item">News</a>
+                </div>
+            </div>
 
-        {% block sticky_button %}
-        {% endblock %}
-
-        <div id="page_content" class="ui container grid pusher">
-            <div class="row">
-                {% block content %}
-                {% endblock %}
+            <div id="page_content" class="ui container twelve wide column grid pusher">
+                <div class="row">
+                    {% block content %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
     </div>

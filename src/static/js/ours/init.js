@@ -29,7 +29,7 @@ $(document).ready(function () {
     $('#page_wrapper .ui.sidebar')
         .sidebar({
             transition: 'push',
-            context: $('#page_wrapper .bottom.segment')
+            context: $('#page_wrapper #sidebar-nav-anchor')
         })
         .sidebar('attach events', '#hamburger_button .item')
     ;

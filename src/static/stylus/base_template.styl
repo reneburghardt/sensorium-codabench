@@ -13,7 +13,7 @@
     Competition Tile Color [Darker Red]: #c7402d
 */
 
-$competition2023 = #ddff00
+$competition2023 = #33ff00
 $currentcompetition = $competition2023
 
 /* --------------------------------------------------------------------------------------
@@ -30,10 +30,15 @@ html
     font-size 16px
 
 h1,
+h1.ui.header,
 h2,
+h2.ui.header,
 h3,
+h3.ui.header,
 h4,
-h5
+h4.ui.header,
+h5,
+h5.ui.header
   font-family Jura, sans-serif
 
 #bg
@@ -47,7 +52,10 @@ h5
 
 #jumbo_logo
     margin-top 20px
-    width 75%
+    height 120px
+
+#logo_div
+    width auto
 
 .organization-logos
     position absolute
@@ -74,15 +82,23 @@ h5
     left 0
     top 9px
 
+.ui.menu
+    font-size 20px
+
 .ui.menu,
 .ui.button
     font-family Jura, sans-serif
 
-.ui.inverted.menu .item
-    margin 0 10px
+.ui.menu .item:before,
+.ui.menu:after
+    content none !important
+
+.ui.menu .item:hover
+    background #ffffff
 
 .ui.secondary.menu .item.button3d,
 .ui.secondary.menu .item.button3d:hover
+    font-size: 20px;
     --c #000000
     --b .1em
     --d 5px
@@ -93,6 +109,10 @@ h5
     background unquote("conic-gradient(at left var(--_s) bottom var(--_s), #0000 90deg, var(--c) 0) 0 100% / calc(100% - var(--b)) calc(100% - var(--b)) border-box")
     clip-path polygon(0% var(--d), var(--d) 0%, 100% 0%, 100% calc(100% - var(--d)), calc(100% - var(--d)) 100%, 0% 100%)
     padding 0.1em 2em
+
+.ui.secondary.vertical.menu>.item
+    margin 0
+    padding 15px
 
 .ui.secondary.inverted.pointing.menu
     border transparent
@@ -179,16 +199,28 @@ h5
 #page_content
     min-height 82vh
     margin-bottom 50px
+    padding 0 200px
+
+    img
+        max-width 100%
 
 #header
-    background transparent
-    margin-bottom 20px
+    background #ffffff
+    border 0
+    height 180px
 
     .ui.menu .ui.dropdown .menu>.item
         color rgba(0, 0, 0, 0.6) !important
 
     .icon.user.outline
         margin-right 0
+
+#page_wrapper
+    background #ffffff
+
+#sidebar-menu
+    width auto
+    box-shadow none
 
 #toast-container
     opacity 0.8

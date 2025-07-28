@@ -5,42 +5,28 @@
 
 {% block content %}
 
-    <!-- Annoucement  -->
-    {% if announcement %}
-    <div style="margin:auto;" class="segment-container ui segment full-width">
-        <div class="ui header">
-            <p>Announcement</p>
-        </div>
-        <div class="container-content">
-            <div class="center aligned column">
-                {{ announcement | safe }}
+    <div class="home-wrap ui grid">
+        <div class="row">
+            <div class="sixteen wide column">
+                <img src="{% static 'img/home_banner.png' %}" alt="Let's predict how the brain processes what we see!"/>
             </div>
         </div>
-    </div>
-    {% endif %}
-
-    <div class="home-wrap">
-        <!-- <front-page-competitions class="segment-container"></front-page-competitions> -->
-         <img src="{% static 'img/home_banner.png' %}" alt="Let's predict how the brain processes what we see!"/>
 
         <!-- Stats section -->
-        <div class="ui three column grid" id="general-stats">
-            <!-- Public Competitions -->
-            <div class="column">
+        <div class="row" id="general-stats">
+            <div class="five wide column">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.public_competitions }}</div>
                     <div class="label">Competitions</div>
                 </div>
             </div>
-            <!-- Users -->
-            <div class="column">
+            <div class="five wide column">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.users }}</div>
                     <div class="label">Users</div>
                 </div>
             </div>
-            <!-- Submissions -->
-            <div class="column">
+            <div class="five wide column">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.submissions }}</div>
                     <div class="label">Submissions</div>
@@ -48,92 +34,55 @@
             </div>
         </div>
 
-        <!-- About Section -->
-        <div id="about-container" class="segment-container ui segment full-width">
-            <div class="ui header">
-                About Sensorium
+        <div class="row">
+            <div class="sixteen wide column">
+                <h2 class="ui header">The Who</h2>
             </div>
-            <div class="container-content">
-                <div class="ui middle stackable grid container">
-                    <div class="eight wide left aligned column">
-                        <div class="row column-bottom-padding">
-                            <h3 class="ui color-header header">The Problem</h3>
-							<strong>Even today’s most advanced models of visual cortex are not able to fully predict the brain’s responses.</strong>
-                            <p>Understanding how the brain processes visual input is a long standing goal in neuroscience. To solve this question in a quantitative, testable, and reproducible way, accurate predictive models of neural population responses to natural stimuli are crucial. However, even today’s most advanced models of visual cortex are only able to account for a fraction of the observed neuronal activity. Furthermore, because there is an abundance of models and metrics, but no widely-used reference dataset, it is challenging to compare models on equal ground. This makes it difficult to determine the current state-of-the-art model.</p>
-							<p>
-								<a href="{% static 'img/sensorium_2023_schematic-01.png' %}" target="_blank">
-									<img src="{% static 'img/sensorium_2023_schematic-01.png' %}"/>
-								</a>
-							</p>
-                        </div>
-                        <div class="row column-bottom-padding">
-                            <div class="ui divider"></div>
-                            <h3 class="ui color-header header">The SENSORIUM 2023 Competition</h3>
-							<strong>Benchmarking the predictive performance of your model on large-scale datasets.</strong>
-                            <p>The SENSORIUM 2023 competition offers a publicly available, large-scale dataset consisting of the activity from over 38,000 neurons from the primary visual cortex of five different mice in response to around 1800 natural scene videos (around 10 seconds). The dataset also includes additional behavioral measurements such as running speed, pupil dilation and eye movements. The performance of predictive models can be automatically evaluated by submitting predicted neural responses to our website which will display the performance of all submissions in a leaderboard for easy comparison.</p>
-							<p>The SENSORIUM 2022 competition approached this issue for static stimulus (pictures) models. This year we are adding a time dimensional component and try to inspire community to establish a benchmark dataset and a model for dynamic stimulus (videos). See more about data in the whitepaper and data section.</p>
-							<strong>Currently, we offer two benchmark tracks</strong>
-							<p>There is a main track and a bonus track. The focus of the main track is to predict the neuronal activity for dynamic stimuli, while the focus of the bonus is to generalize to out of domain (OOD) stimuli.</p>
-							<strong>Main Track</strong>
-							<p>We provide data from 5 mice, more than 38,000 neurons, around 1800 natural scene videos (around 10 seconds), and additionally behavioral activity (pupil center, pupil dilation, and running speed). The goal is to train a networks, which would predict the neuronal activity for the neurons. To see more details about data or metrics see the corresponding section. <i>Please note that this year there is not separate track for behaviour. It is up for the team if they want to use behavioural data or not.</i></p>
-							<strong>Bonus Track</strong>
-							<p>We think that from a biological perspective it is crucial to have not only good performing but also generalizable models. Hence, we establish a bonus track with five out of domain (OOD) stimuli to measure the models’ generalizable capabilities. This track would have one winning team.</p>
-							<strong>Let’s predict how the brain processes what we see!</strong>
-                        </div>
-                    </div>
-                    <!-- News Section -->
-                    <div class="eight wide center aligned column">
-                        <div class="row news-column-bottom-padding">
-                            <h1 class="ui color-header header">News</h1>
-                        </div>
-                        {% for post in news_posts %}
-                        <div class="row news-column-bottom-padding news">
-                            <span class="news-date">{{post.created_when|date:"M d, Y"}}</span>
-                            <div class="news-heading">
-                                {% if post.link %}
-                                    <a href="{{post.link}}" target="_blank"><h3>{{post.title}}</h3></a>
-                                {% else %}
-                                    <h3 class="news-heading-title">{{post.title}}</h3>
-                                {% endif %}
-                            </div>
-                            <div class="news-body">
-                                {{ post.text | safe }}
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
+        </div>
+
+        <div class="row">
+            <div class="eight wide column">
+                <div class="ui container">
+                    <p>We are looking for the best neural predictive model that can predict the activity of thousands of neurons in the primary visual cortex of mice in response to videos.</p>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <div class="ui container">
+                    <img src="{% static 'img/mousy_mascot_tv.png' %}" alt="Mousy Mascot TV" class="ui centered image">
                 </div>
             </div>
         </div>
 
-        <!-- Citation Section -->
-        <!--
-        <div id="cite-container" class="segment-container ui segment full-width">
-            <div class="ui header">
-                Cite Sensorium
+        {% if announcement %}
+            <div class="row">
+                <div class="sixteen wide column">
+                    <h2 class="ui header">The News</h2>
+                </div>
             </div>
-            <div class="row container-content left aligned">
-                <h3 class="ui color-header header">Sensorium 2023</h3>
-                <pre>
-@article{sensorium2023,
-	title = {The {Dynamic} {Sensorium} competition for predicting large-scale mouse visual cortex activity from videos},
-	author = {Turishcheva, Polina and Fahey, Paul G. and Hansel, Laura and Froebe, Rachel and Ponder, Kayla and Vystrčilová, Michaela and Willeke, Konstantin F. and Bashiri, Mohammad and Wang, Eric and Ding, Zhiwei and Tolias, Andreas S. and Sinz, Fabian H. and Ecker, Alexander S.},
-	year = {2024},
-	doi = {<a href="https://doi.org/10.48550/arXiv.2305.19654">10.48550/arXiv.2305.19654</a>},
-	url = {<a href="http://arxiv.org/abs/2305.19654" target="_blank">http://arxiv.org/abs/2305.19654</a>},
-} </pre>
-				<div class="ui divider"></div>
-                <h3 class="ui color-header header">Sensorium 2022</h3>
-                <pre>
-@article{sensorium2022,
-	title = {The {Sensorium} competition on predicting large-scale mouse primary visual cortex activity},
-	author = {Willeke, Konstantin F. and Fahey, Paul G. and Bashiri, Mohammad and Pede, Laura and Burg, Max F. and Blessing, Christoph and Cadena, Santiago A. and Ding, Zhiwei and Lurz, Konstantin-Klemens and Ponder, Kayla and Muhammad, Taliah and Patel, Saumil S. and Ecker, Alexander S. and Tolias, Andreas S. and Sinz, Fabian H.},
-	year = {2022},
-	doi = {<a href="https://doi.org/10.48550/arXiv.2206.08666">10.48550/arXiv.2206.08666</a>},
-	url = {<a href="http://arxiv.org/abs/2206.08666">http://arxiv.org/abs/2206.08666</a>},
-} </pre>
+
+            <div class="row">
+                <div class="sixteen wide column">
+                    {{ announcement | safe }}
+                </div>
             </div>
-        </div>-->
+        {% endif %}
+
+        <div class="row">
+            <div class="eight wide column">
+                <div class="ui container">
+                    <h2 class="ui header">The Problem</h2>
+                    <p style="font-weight: bold">Even today’s most advanced models of visual cortex are not able to fully predict the brain’s responses.</p>
+                    <p>Understanding how the brain processes visual input is a long-standing goal in neuroscience.</p>
+                </div>
+            </div>
+            <div class="eight wide column">
+                <div class="ui container">
+                    <h2 class="ui header">The 2025 Competition</h2>
+                    <p style="font-weight: bold">Benchmarking the predictive performance of your model on large-scale datasets.</p>
+                    <p>The SENSORIUM 2025 competition oﬀers a publicly available, lar-ge-scale dataset consisting of the activity from over 38,000 neurons from the primary visual cortex of ﬁve diﬀerent mice in response to around 1800 natural scene videos (around 10 seconds).</p>
+                </div>
+            </div>
+        </div>
 
     </div>
 {% endblock %}
