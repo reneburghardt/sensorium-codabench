@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui container">
+        <h1>About Us</h1>
+        <p>
+            Polina Turishcheva (University of Göttingen)<br/>
+            Eric Y. Wang (Baylor College of Medicine)<br/>
+            Konstantin F. Willeke (University of Tübingen)<br/>
+            Paul G. Fahey (Baylor College of Medicine)<br/>
+            Laura Hansel (University of Göttingen)<br/>
+            Michaela Vystrčilová (University of Göttingen)<br/>
+            Mohammad Bashiri (University of Tübingen)<br/>
+            Zhiwei Ding (Baylor College of Medicine)<br/>
+            Kayla Ponder (Baylor College of Medicine)<br/>
+            Alexander Ecker (University of Göttingen)<br/>
+            Andreas S. Tolias (Baylor College of Medicine)<br/>
+            Fabian H. Sinz (University of Göttingen)
+        </p>
+    </div>
+{% endblock %}
+
+{% block mousy_mascot %}
+    <img src="{% static 'img/mousy_mascots/mousy_mascot_happy.png' %}" alt="Happy Mousy Mascot">
+{% endblock %}

@@ -44,6 +44,29 @@ class TermsOfUseView(TemplateView):
     template_name = 'pages/terms_of_use.html'
 
 
+class ProblemView(TemplateView):
+    template_name = 'pages/problem.html'
+
+
+class AboutUsView(TemplateView):
+    template_name = 'pages/about_us.html'
+
+
+class NewsView(TemplateView):
+    template_name = 'pages/news.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        announcement = Announcement.objects.all().first()
+        context['announcement'] = announcement.text if announcement else None
+
+        news_posts = NewsPost.objects.all().order_by('-id')
+        context['news_posts'] = news_posts
+
+        return context
+
+
 class SearchView(TemplateView):
     template_name = 'search/form.html'
 

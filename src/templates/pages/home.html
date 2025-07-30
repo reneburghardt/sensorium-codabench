@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <div class="home-wrap ui grid">
+    <div class="home-wrap stackable ui grid centered aligned">
         <div class="row">
             <div class="sixteen wide column">
                 <img src="{% static 'img/home_banner.png' %}" alt="Let's predict how the brain processes what we see!"/>
@@ -14,19 +14,19 @@
 
         <!-- Stats section -->
         <div class="row" id="general-stats">
-            <div class="five wide column">
+            <div class="five wide column centered aligned">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.public_competitions }}</div>
                     <div class="label">Competitions</div>
                 </div>
             </div>
-            <div class="five wide column">
+            <div class="five wide column centered aligned">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.users }}</div>
                     <div class="label">Users</div>
                 </div>
             </div>
-            <div class="five wide column">
+            <div class="five wide column centered aligned">
                 <div class="ui statistic">
                     <div class="value">{{ HOME_PAGE_COUNTERS_INFO.submissions }}</div>
                     <div class="label">Submissions</div>
@@ -44,11 +44,14 @@
             <div class="eight wide column">
                 <div class="ui container">
                     <p>We are looking for the best neural predictive model that can predict the activity of thousands of neurons in the primary visual cortex of mice in response to videos.</p>
+                    <a class="item button3d" href="{% url "pages:about_us" %}">
+                        More about us
+                    </a>
                 </div>
             </div>
             <div class="eight wide column">
                 <div class="ui container">
-                    <img src="{% static 'img/mousy_mascot_tv.png' %}" alt="Mousy Mascot TV" class="ui centered image">
+                    <img src="{% static 'img/mousy_mascots/mousy_mascot_tv.png' %}" alt="Mousy Mascot TV" style="max-width: 300px;">
                 </div>
             </div>
         </div>
@@ -71,15 +74,21 @@
             <div class="eight wide column">
                 <div class="ui container">
                     <h2 class="ui header">The Problem</h2>
-                    <p style="font-weight: bold">Even today’s most advanced models of visual cortex are not able to fully predict the brain’s responses.</p>
+                    <p style="font-weight: bold">Even today's most advanced models of visual cortex are not able to fully predict the brain's responses.</p>
                     <p>Understanding how the brain processes visual input is a long-standing goal in neuroscience.</p>
+                    <a class="item button3d" href="{% url "pages:problem" %}">
+                        Read more
+                    </a>
                 </div>
             </div>
             <div class="eight wide column">
                 <div class="ui container">
                     <h2 class="ui header">The 2025 Competition</h2>
                     <p style="font-weight: bold">Benchmarking the predictive performance of your model on large-scale datasets.</p>
-                    <p>The SENSORIUM 2025 competition oﬀers a publicly available, lar-ge-scale dataset consisting of the activity from over 38,000 neurons from the primary visual cortex of ﬁve diﬀerent mice in response to around 1800 natural scene videos (around 10 seconds).</p>
+                    <p>The SENSORIUM 2025 competition offers a publicly available, large-scale dataset consisting of the activity from over 38,000 neurons from the primary visual cortex of five different mice in response to around 1800 natural scene videos (around 10 seconds).</p>
+                    <a class="item button3d" href="{% url "pages:home" %}">
+                        Read more
+                    </a>
                 </div>
             </div>
         </div>

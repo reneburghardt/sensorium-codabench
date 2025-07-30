@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui container">
+        <h1>The News</h1>
+        {% for post in news_posts %}
+            <div class="row news-column-bottom-padding news">
+                <span class="news-date">{{post.created_when|date:"M d, Y"}}</span>
+                <div class="news-heading">
+                    {% if post.link %}
+                        <a href="{{post.link}}" target="_blank"><h3>{{post.title}}</h3></a>
+                    {% else %}
+                        <h3 class="news-heading-title">{{post.title}}</h3>
+                    {% endif %}
+                </div>
+                <div class="news-body">
+                    {{ post.text | safe }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block mousy_mascot %}
+    <img src="{% static 'img/mousy_mascots/mousy_mascot_pointing.png' %}" alt="Pointing Mousy Mascot">
+{% endblock %}

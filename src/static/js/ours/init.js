@@ -3,19 +3,19 @@ $(document).ready(function () {
      Template niceties
      */
     // header particles
-    particlesJS.load('bg', URLS.assets.header_particles)
+    // particlesJS.load('bg', URLS.assets.header_particles)
 
     // fix menu when passed
-    $('.masthead')
-        .visibility({
-            once: false,
-            onBottomPassed: function () {
-                $('.fixed.menu').transition('fade in')
-            },
-            onBottomPassedReverse: function () {
-                $('.fixed.menu').transition('fade out')
-            }
-        })
+    // $('.masthead')
+    //     .visibility({
+    //         once: false,
+    //         onBottomPassed: function () {
+    //             $('.fixed.menu').transition('fade in')
+    //         },
+    //         onBottomPassedReverse: function () {
+    //             $('.fixed.menu').transition('fade out')
+    //         }
+    //     })
 
     // Make base template dropdown not change text on selection
     $("#user_dropdown").dropdown({
@@ -26,13 +26,26 @@ $(document).ready(function () {
         action: 'hide'
     })
     // Sidebar helpers
-    $('#page_wrapper .ui.sidebar')
+    $('#sidebar-menu')
         .sidebar({
-            transition: 'push',
-            context: $('#page_wrapper #sidebar-nav-anchor')
+            transition: 'overlay',
+            closable: false,
+            dimPage: false,
+            context: $('#page_wrapper #sidebar-nav-anchor'),
+            onShow: function () {
+                // Show the X icon, hide the sidebar icon
+                $('#sidebar-toggle a .sidebar.icon').hide();
+                $('#sidebar-toggle a .x.icon').show();
+            },
+            onHidden: function () {
+                // Show the sidebar icon, hide the X icon
+                $('#sidebar-toggle a .sidebar.icon').show();
+                $('#sidebar-toggle a .x.icon').hide();
+            }
         })
-        .sidebar('attach events', '#hamburger_button .item')
+        .sidebar('attach events', '#sidebar-toggle a', 'toggle')
     ;
+    $('#sidebar-menu').sidebar('show');
 
     /*-----------------------------------------------------------------------------
      Riotjs

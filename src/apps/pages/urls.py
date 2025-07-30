@@ -15,6 +15,9 @@ urlpatterns = [
     path('imprint', views.ImprintView.as_view(), name="imprint"),
     path('privacy_policy', views.PrivacyPolicyView.as_view(), name="privacy_policy"),
     path('terms_of_use', views.TermsOfUseView.as_view(), name="terms_of_use"),
+    path('problem', views.ProblemView.as_view(), name="problem"),
+    path('about_us', views.AboutUsView.as_view(), name="about_us"),
+    path('news', views.NewsView.as_view(), name="news"),
     path('monitor_queues', views.MonitorQueuesView.as_view(), name="monitor_queues"),
     # path('test', views.CompetitionListTestView.as_view()),
 ]

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui container">
+        <h1>The Problem</h1>
+        <p>Even today's most advanced models of visual cortex are not able to fully predict the brain's responses.</p>
+		<p>Understanding how the brain processes visual input is a long standing goal in neuroscience. To solve this question in a quantitative, testable, and reproducible way, accurate predictive models of neural population responses to natural stimuli are crucial. However, even today's most advanced models of visual cortex are only able to account for a fraction of the observed neuronal activity. Furthermore, because there is an abundance of models and metrics, but no widely-used reference dataset, it is challenging to compare models on equal ground. This makes it difficult to determine the current state-of-the-art model.</p>
+        <img src="{% static 'img/sensorium_grafik_versuchsanordnung_gruen.png' %}" alt="Problem diagram">
+    </div>
+{% endblock %}
+
+{% block mousy_mascot %}
+    <img src="{% static 'img/mousy_mascots/mousy_mascot_poster.png' %}" alt="Mousy Mascot with Poster" style="max-height: 200px;">
+{% endblock %}

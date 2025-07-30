@@ -65,8 +65,8 @@
 <div id="header" class="ui vertical center aligned segment masthead jumbotron
     {% block top_div_extra_class %}{% endblock %}">
     <div class="ui container">
-        <div id="topleft_menu" class="ui secondary menu">
-            <div class="right menu item">
+        <div id="top_menu" class="ui secondary menu">
+            <div id="topright_menu" class="menu item">
                 {% if request.user.is_staff %}
                     <div id="competition_dropdown" class="ui dropdown item">
                         <div class="text">
@@ -156,12 +156,10 @@
                     {% endif %}
                 {% endif %}
             </div>
-            <div class="left menu item">
-                <div id="logo_div" class="ui container">
-                    <a href="/">
-                        <img id="jumbo_logo" src="{% static 'img/sensorium_logo_schwarz.png' %}">
-                    </a>
-                </div>
+            <div id="logo_div" class="menu item">
+                <a href="/">
+                    <img id="jumbo_logo" src="{% static 'img/sensorium_logo_schwarz.png' %}">
+                </a>
             </div>
         </div>
     </div>
@@ -172,27 +170,31 @@
 {% endblock %}
 
 <div id="page_wrapper">
-    <div id="hamburger_button" class="ui top attached demo menu">
-        <a class="item ui icon button">
-            <i class="sidebar icon"></i>
-        </a>
-    </div>
     <div class="ui bottom attached segment">
-        <div class="ui grid">
+        <div class="ui grid stackable centered aligned">
             <div class="four wide column">
-                <div id="sidebar-nav-anchor" class="ui container">
+                <div id="sidebar-toggle">
+                    <a class="item ui icon button">
+                        <i class="sidebar icon" style="display: none;"></i>
+                        <i class="x icon"></i>
+                    </a>
                 </div>
-                <div id="sidebar-menu" class="ui secondary sidebar vertical visible menu left">
-                    <a href="{% url "pages:home" %}" class="item">Problem</a>
-                    <a href="{% url "pages:home" %}" class="item">Competition</a>
-                    <a href="{% url "pages:home" %}" class="item">Starter Kit</a>
-                    <a href="{% url "pages:home" %}" class="item">Results</a>
-                    <a href="{% url "pages:home" %}" class="item">About Us</a>
-                    <a href="{% url "pages:home" %}" class="item">News</a>
+                <div id="sidebar-nav-anchor" class="ui container">
+                    <div id="sidebar-menu" class="ui secondary sidebar vertical menu top visible">
+                        <a href="{% url "pages:problem" %}" class="item">Problem</a>
+                        <a href="{% url "pages:home" %}" class="item">Competition</a>
+                        <a href="https://github.com/ecker-lab/sensorium_2023" class="item">Starter Kit</a>
+                        <a href="{% url "pages:home" %}" class="item">Results</a>
+                        <a href="{% url "pages:about_us" %}" class="item">About Us</a>
+                        <a href="{% url "pages:news" %}" class="item">News</a>
+                    </div>
                 </div>
             </div>
 
             <div id="page_content" class="ui container twelve wide column grid pusher">
+                {% if request.path != '/' %}
+                    <!-- breadcrumb -->
+                {% endif %}
                 <div class="row">
                     {% block content %}
                     {% endblock %}
@@ -200,6 +202,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="mousy-mascot-wrapper" class="ui container">
+    {% block mousy_mascot %}
+    {% endblock %}
 </div>
 
 <div class="ui inverted vertical footer segment">

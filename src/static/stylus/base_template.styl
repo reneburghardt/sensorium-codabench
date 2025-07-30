@@ -27,7 +27,7 @@ html
 .ui.segment,
 .ui.segments,
 .segment
-    font-size 16px
+    font-size 20px
 
 h1,
 h1.ui.header,
@@ -41,6 +41,26 @@ h5,
 h5.ui.header
   font-family Jura, sans-serif
 
+h1,
+h1.ui.header
+    font-size 44px
+
+h2,
+h2.ui.header
+    font-size 36px
+
+h3,
+h3.ui.header
+    font-size 28px
+
+h4,
+h4.ui.header
+    font-size 24px
+
+h5,
+h5.ui.header
+    font-size 22px
+
 #bg
     z-index -1
     position absolute
@@ -51,11 +71,7 @@ h5.ui.header
     background rgba(19, 48, 70, 0.9)
 
 #jumbo_logo
-    margin-top 20px
     height 120px
-
-#logo_div
-    width auto
 
 .organization-logos
     position absolute
@@ -83,7 +99,7 @@ h5.ui.header
     top 9px
 
 .ui.menu
-    font-size 20px
+    font-size 26px
 
 .ui.menu,
 .ui.button
@@ -96,9 +112,10 @@ h5.ui.header
 .ui.menu .item:hover
     background #ffffff
 
+a.item.button3d,
+a.item.button3d:hover,
 .ui.secondary.menu .item.button3d,
 .ui.secondary.menu .item.button3d:hover
-    font-size: 20px;
     --c #000000
     --b .1em
     --d 5px
@@ -108,7 +125,18 @@ h5.ui.header
     border-width var(--b) var(--b) var(--_s) var(--_s)
     background unquote("conic-gradient(at left var(--_s) bottom var(--_s), #0000 90deg, var(--c) 0) 0 100% / calc(100% - var(--b)) calc(100% - var(--b)) border-box")
     clip-path polygon(0% var(--d), var(--d) 0%, 100% 0%, 100% calc(100% - var(--d)), calc(100% - var(--d)) 100%, 0% 100%)
-    padding 0.1em 2em
+
+.ui.secondary.menu .item.button3d,
+.ui.secondary.menu .item.button3d:hover
+    text-transform: capitalize
+    font-size: 26px;
+    padding 0.1em 1.8em
+    margin 0
+
+a.item.button3d,
+a.item.button3d:hover
+    text-transform: uppercase
+    padding 0.1em 1em
 
 .ui.secondary.vertical.menu>.item
     margin 0
@@ -199,15 +227,19 @@ h5.ui.header
 #page_content
     min-height 82vh
     margin-bottom 50px
-    padding 0 200px
 
     img
         max-width 100%
 
+#page_content>div.row
+    max-width 1200px
+    margin 0 auto
+
 #header
     background #ffffff
     border 0
-    height 180px
+    height auto
+    padding 0 !important
 
     .ui.menu .ui.dropdown .menu>.item
         color rgba(0, 0, 0, 0.6) !important
@@ -215,8 +247,35 @@ h5.ui.header
     .icon.user.outline
         margin-right 0
 
+#header>div.container
+    width 100%
+
+#top_menu
+    flex-direction row-reverse
+    justify-content space-between
+    align-items center
+
+#top_menu>div.menu.item
+    align-self flex-start
+
+#topright_menu
+    flex-wrap wrap
+    gap 0.5em
+
+
 #page_wrapper
     background #ffffff
+
+#page_wrapper>.segment
+    border none
+
+#sidebar-toggle
+    text-align right
+
+    a
+        background: none
+        font-size 30px
+        padding 0
 
 #sidebar-menu
     width auto
@@ -229,6 +288,18 @@ h5.ui.header
 
 .ui.text.container.style_button
     bottom 0!important
+
+/* --------------------------------------------------------------------------------------
+ mousy mascots
+ */
+#mousy-mascot-wrapper
+    width 100%
+    text-align right
+    padding-right 200px
+    margin 20px 0 -5px
+
+#mousy-mascot-wrapper img
+    max-height 150px
 
 /* --------------------------------------------------------------------------------------
  top menu/dropdowns
@@ -264,42 +335,9 @@ h5.ui.header
 /* --------------------------------------------------------------------------------------
  mobile
  */
-@media only screen and (max-width 625px)
-    .tl.item
-        display none!important
-
-#hamburger_button
-        position absolute
-        top 14px
-        left 19px
-        z-index 100
-
-        .button
-            color #e2e2e2 !important
-            background-color rgba(255, 255, 255, .15) !important
-
-        .button:hover
-            color #3f3f3f !important
-            background-color rgba(255, 255, 255, .65) !important
-
-        .icon
-            display inherit
-            cursor pointer
-            margin 0
-
-        @media screen and (min-width 626px)
-            display none
-
-    .secondary.pointing.menu .toc.item
-        display block
-
-    .masthead h1.ui.header
-        font-size 2em
-        margin-top 1.5em
-
-    .masthead h2
-        margin-top 0.5em
-        font-size 1.5em
+@media only screen and (max-width 1024px)
+    #top_menu
+        flex-direction column
 
 /* --------------------------------------------------------------------------------------
  Force the footer to stretch all the way to the bottom of viewport
