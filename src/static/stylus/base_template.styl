@@ -24,6 +24,7 @@ $currentcompetition = $competition2023
 html
     background-color #ffffff
 
+body,
 .ui.segment,
 .ui.segments,
 .segment
@@ -224,12 +225,20 @@ a.item.button3d:hover
         padding-top 5em
         padding-bottom 5em
 
+#page_wrapper
+    transition padding-bottom 0.5s ease
+    overflow-y hidden
+
 #page_content
-    min-height 82vh
-    margin-bottom 50px
+    padding-top 50px !important
 
     img
         max-width 100%
+
+@media only screen and (min-width: 768px)
+    #page_content
+        margin-top 0 !important
+        transform none
 
 #page_content>div.row
     max-width 1200px
@@ -262,15 +271,13 @@ a.item.button3d:hover
     flex-wrap wrap
     gap 0.5em
 
-
-#page_wrapper
-    background #ffffff
-
-#page_wrapper>.segment
-    border none
+.pushable
+    height auto
 
 #sidebar-toggle
+    display none
     text-align right
+    padding-right 50px
 
     a
         background: none
@@ -278,8 +285,18 @@ a.item.button3d:hover
         padding 0
 
 #sidebar-menu
+    display flex
+    flex-direction column
+    align-items flex-start
     width auto
     box-shadow none
+    align-self flex-start
+
+#sidebar-menu.ui.secondary.menu .item
+    width auto
+    align-self flex-start
+    margin-left 30px
+    word-break break-word
 
 #toast-container
     opacity 0.8
@@ -335,7 +352,20 @@ a.item.button3d:hover
 /* --------------------------------------------------------------------------------------
  mobile
  */
-@media only screen and (max-width 1024px)
+@media only screen and (max-width: 767px)
+    .ui.grid>.stackable.stackable.row>.column,
+    .ui.stackable.grid>.column.grid>.column,
+    .ui.stackable.grid>.column.row>.column,
+    .ui.stackable.grid>.column:not(.row),
+    .ui.stackable.grid>.row>.column,
+    .ui.stackable.grid>.row>.wide.column,
+    .ui.stackable.grid>.wide.column
+        padding 1rem 2rem !important
+
+    #sidebar-toggle
+        display block
+
+@media only screen and (max-width 1160px)
     #top_menu
         flex-direction column
 

@@ -169,42 +169,33 @@
 {% block sticky_button %}
 {% endblock %}
 
-<div id="page_wrapper">
-    <div class="ui bottom attached segment">
-        <div class="ui grid stackable centered aligned">
-            <div class="four wide column">
-                <div id="sidebar-toggle">
-                    <a class="item ui icon button">
-                        <i class="sidebar icon" style="display: none;"></i>
-                        <i class="x icon"></i>
-                    </a>
-                </div>
-                <div id="sidebar-nav-anchor" class="ui container">
-                    <div id="sidebar-menu" class="ui secondary sidebar vertical menu top visible">
-                        <a href="{% url "pages:problem" %}" class="item">Problem</a>
-                        <a href="{% url "pages:home" %}" class="item">Competition</a>
-                        <a href="https://github.com/ecker-lab/sensorium_2023" class="item">Starter Kit</a>
-                        <a href="{% url "pages:home" %}" class="item">Results</a>
-                        <a href="{% url "pages:about_us" %}" class="item">About Us</a>
-                        <a href="{% url "pages:news" %}" class="item">News</a>
-                    </div>
-                </div>
-            </div>
-
-            <div id="page_content" class="ui container twelve wide column grid pusher">
-                {% if request.path != '/' %}
-                    <!-- breadcrumb -->
-                {% endif %}
-                <div class="row">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-            </div>
+<div id="sidebar-toggle">
+    <a class="item ui icon button">
+        <i class="sidebar icon" style="display: none;"></i>
+        <i class="x icon"></i>
+    </a>
+</div>
+<div id="page_wrapper" class="ui grid stackable">
+    <div id="sidebar-menu" class="ui secondary sidebar vertical menu top four wide column visible">
+        <a href="{% url "pages:problem" %}" class="item">Problem</a>
+        <a href="{% url "pages:home" %}" class="item">Competition</a>
+        <a href="https://github.com/ecker-lab/sensorium_2023" class="item">Starter Kit</a>
+        <a href="{% url "pages:home" %}" class="item">Results</a>
+        <a href="{% url "pages:about_us" %}" class="item">About Us</a>
+        <a href="{% url "pages:news" %}" class="item">News</a>
+    </div>
+    <div id="page_content" class="ui container grid pusher twelve wide column">
+        {% if request.path != '/' %}
+            <!-- breadcrumb -->
+        {% endif %}
+        <div class="row">
+            {% block content %}
+            {% endblock %}
         </div>
     </div>
 </div>
 
-<div id="mousy-mascot-wrapper" class="ui container">
+<div id="mousy-mascot-wrapper">
     {% block mousy_mascot %}
     {% endblock %}
 </div>

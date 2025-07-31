@@ -28,24 +28,50 @@ $(document).ready(function () {
     // Sidebar helpers
     $('#sidebar-menu')
         .sidebar({
-            transition: 'overlay',
+            transition: 'push',
             closable: false,
             dimPage: false,
-            context: $('#page_wrapper #sidebar-nav-anchor'),
-            onShow: function () {
-                // Show the X icon, hide the sidebar icon
-                $('#sidebar-toggle a .sidebar.icon').hide();
-                $('#sidebar-toggle a .x.icon').show();
-            },
-            onHidden: function () {
-                // Show the sidebar icon, hide the X icon
-                $('#sidebar-toggle a .sidebar.icon').show();
-                $('#sidebar-toggle a .x.icon').hide();
-            }
+            context: $('#page_wrapper'),
         })
-        .sidebar('attach events', '#sidebar-toggle a', 'toggle')
+        //.sidebar('attach events', '#sidebar-toggle a', 'toggle')
     ;
-    $('#sidebar-menu').sidebar('show');
+
+    $('#sidebar-toggle a').on('click', function () {
+        const sidebar = $('#sidebar-menu');
+        const wrapper = document.getElementById('page_wrapper');
+
+        const isVisible = sidebar.hasClass('visible');
+
+        if (!isVisible) {
+            const sidebarHeight = sidebar.outerHeight();
+            wrapper.style.setProperty('padding-bottom', sidebarHeight + 'px', 'important');
+            $('#sidebar-toggle a .sidebar.icon').hide();
+            $('#sidebar-toggle a .x.icon').show();
+        } else {
+            wrapper.style.setProperty('padding-bottom', '', 'important');
+            $('#sidebar-toggle a .sidebar.icon').show();
+            $('#sidebar-toggle a .x.icon').hide();
+        }
+
+        sidebar.sidebar('toggle');
+    });
+
+    if (window.innerWidth >= 1160) {
+      if (!$('#sidebar-menu').hasClass('visible')) {
+        $('#sidebar-menu').sidebar('show');
+        $('#sidebar-toggle a .sidebar.icon').hide();
+        $('#sidebar-toggle a .x.icon').show();
+      }
+    } else {
+      if ($('#sidebar-menu').hasClass('visible')) {
+        $('#sidebar-menu').sidebar('hide');
+        $('#sidebar-toggle a .sidebar.icon').show();
+        $('#sidebar-toggle a .x.icon').hide();
+      }
+    }
+
+    const sidebar = $('#sidebar-menu');
+    sidebar[0].style.setProperty('margin-bottom', `-${sidebar.outerHeight(true)}px`, 'important');
 
     /*-----------------------------------------------------------------------------
      Riotjs
